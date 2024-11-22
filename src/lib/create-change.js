@@ -54,6 +54,7 @@ async function createChange({
             'toolId': toolId,
             'stageName': jobname,
             'buildNumber': runId,
+            'runNumber': runNumber,
             'attemptNumber': runAttempt,
             'sha': sha,
             'action': 'customChange',
