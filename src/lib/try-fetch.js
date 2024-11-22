@@ -19,7 +19,9 @@ async function tryFetch({
   changeCreationStartTime,
   runId,
   sha,
-  runAttempt
+  runAttempt,
+  repository,
+  workflow
 }) {
     try {
         await doFetch({
@@ -36,7 +38,9 @@ async function tryFetch({
           abortOnChangeCreationFailure,
           runId,
           sha,
-          runAttempt
+          runAttempt,
+          repository,
+          workflow
         });
     } catch (error) {
         if (error.message == "500") {

@@ -21,6 +21,10 @@ const main = async() => {
     const sha = core.getInput('sha', { required: true });
     const runAttempt = core.getInput('run_attempt', { required: false }) || '1';
 
+    const repository = core.getInput('repository', { required: true });
+    const workflow = core.getInput('workflow', { required: true });
+
+
     let abortOnChangeCreationFailure = core.getInput('abortOnChangeCreationFailure');
     abortOnChangeCreationFailure = abortOnChangeCreationFailure === undefined || abortOnChangeCreationFailure === "" ? true : (abortOnChangeCreationFailure == "true");
 
@@ -49,7 +53,9 @@ const main = async() => {
         runId,
         runNumber,
         sha,
-        runAttempt
+        runAttempt,
+        repository,
+        workflow
       });
     } catch (err) {
       if (abortOnChangeCreationFailure) {
@@ -99,7 +105,9 @@ const main = async() => {
         runId,
         runNumber,
         sha,
-        runAttempt
+        runAttempt,
+        repository,
+        workflow
       });
 
     }

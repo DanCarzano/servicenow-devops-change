@@ -15,14 +15,16 @@ async function doFetch({
   abortOnChangeCreationFailure,
   runId,
   sha,
-  runAttempt
+  runAttempt,
+  repository,
+  workflow
 }) {
 
 
   let githubContext = JSON.parse(githubContextStr);
 
   const codesAllowedArr = '200,201,400,401,403,404,500'.split(',').map(Number);
-  const pipelineName = `${githubContext.repository}` + '/' + `${githubContext.workflow}`;
+  const pipelineName = `${repository}` + '/' + `${workflow}`;
   const buildNumber = runId;
   const attemptNumber = runAttempt;
 

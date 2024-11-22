@@ -46,6 +46,12 @@ inputs:
     description: 'Run attempt number'
     required: false
     default: '1'
+  repository:
+    description: 'GitHub Repository'
+    required: true
+  workflow:
+    description: 'GitHub Workflow Name'
+    required: true
   changeCreationTimeOut:
     description: 'The max. time in seconds to wait until change created.'
     required: false

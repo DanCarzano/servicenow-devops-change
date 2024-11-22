@@ -14,7 +14,9 @@ async function createChange({
     runId,
     runNumber,
     sha,
-    runAttempt
+    runAttempt,
+    repository,
+    workflow
 }) {
 
     console.log('Calling Change Control API to create change....');
@@ -58,8 +60,8 @@ async function createChange({
             'attemptNumber': runAttempt,
             'sha': sha,
             'action': 'customChange',
-            'workflow': `${githubContext.workflow}`,
-            'repository': `${githubContext.repository}`,
+            'workflow': workflow,
+            'repository': repository,
             'branchName': `${githubContext.ref_name}`,
             'changeRequestDetails': changeRequestDetails
         };
