@@ -12,7 +12,10 @@ async function doFetch({
   githubContextStr,
   prevPollChangeDetails,
   changeCreationTimeOut,
-  abortOnChangeCreationFailure
+  abortOnChangeCreationFailure,
+  runId,
+  sha,
+  runAttempt
 }) {
 
 
@@ -20,8 +23,8 @@ async function doFetch({
 
   const codesAllowedArr = '200,201,400,401,403,404,500'.split(',').map(Number);
   const pipelineName = `${githubContext.repository}` + '/' + `${githubContext.workflow}`;
-  const buildNumber = `${githubContext.run_id}`;
-  const attemptNumber = `${githubContext.run_attempt}`;
+  const buildNumber = runId;
+  const attemptNumber = runAttempt;
 
   let endpoint = '';
   let httpHeaders = {};
