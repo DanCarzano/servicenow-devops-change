@@ -16,7 +16,10 @@ async function tryFetch({
   prevPollChangeDetails,
   changeCreationTimeOut,
   abortOnChangeCreationFailure,
-  changeCreationStartTime
+  changeCreationStartTime,
+  runId,
+  sha,
+  runAttempt
 }) {
     try {
         await doFetch({
@@ -30,7 +33,10 @@ async function tryFetch({
           githubContextStr,
           prevPollChangeDetails,
           changeCreationTimeOut,
-          abortOnChangeCreationFailure
+          abortOnChangeCreationFailure,
+          runId,
+          sha,
+          runAttempt
         });
     } catch (error) {
         if (error.message == "500") {
@@ -99,7 +105,10 @@ async function tryFetch({
           prevPollChangeDetails,
           changeCreationTimeOut,
           abortOnChangeCreationFailure,
-          changeCreationStartTime
+          changeCreationStartTime,
+          runId,
+          sha,
+          runAttempt
         });
     }
 }
