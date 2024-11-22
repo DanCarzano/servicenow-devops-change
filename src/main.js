@@ -16,6 +16,11 @@ const main = async() => {
     let changeRequestDetailsStr = core.getInput('change-request', { required: true });
     let githubContextStr = core.getInput('context-github', { required: true });
 
+    const runId = core.getInput('run_id', { required: true });
+    const runNumber = core.getInput('run_number', { required: true });
+    const sha = core.getInput('sha', { required: true });
+    const runAttempt = core.getInput('run_attempt', { required: false }) || '1';
+
     let abortOnChangeCreationFailure = core.getInput('abortOnChangeCreationFailure');
     abortOnChangeCreationFailure = abortOnChangeCreationFailure === undefined || abortOnChangeCreationFailure === "" ? true : (abortOnChangeCreationFailure == "true");
 
@@ -40,7 +45,11 @@ const main = async() => {
         jobname,
         githubContextStr,
         changeRequestDetailsStr,
-        deploymentGateStr
+        deploymentGateStr,
+        runId,
+        runNumber,
+        sha,
+        runAttempt
       });
     } catch (err) {
       if (abortOnChangeCreationFailure) {
@@ -86,7 +95,11 @@ const main = async() => {
         prevPollChangeDetails,
         changeCreationTimeOut,
         abortOnChangeCreationFailure,
-        changeCreationStartTime
+        changeCreationStartTime,
+        runId,
+        runNumber,
+        sha,
+        runAttempt
       });
 
     }

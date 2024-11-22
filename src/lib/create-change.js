@@ -10,7 +10,11 @@ async function createChange({
     jobname,
     githubContextStr,
     changeRequestDetailsStr,
-    deploymentGateStr
+    deploymentGateStr,
+    runId,
+    runNumber,
+    sha,
+    runAttempt
 }) {
 
     console.log('Calling Change Control API to create change....');
@@ -49,9 +53,9 @@ async function createChange({
         payload = {
             'toolId': toolId,
             'stageName': jobname,
-            'buildNumber': `${githubContext.run_id}`,
-            'attemptNumber': `${githubContext.run_attempt}`,
-            'sha': `${githubContext.sha}`,
+            'buildNumber': runId,
+            'attemptNumber': runAttempt,
+            'sha': sha,
             'action': 'customChange',
             'workflow': `${githubContext.workflow}`,
             'repository': `${githubContext.repository}`,

@@ -33,6 +33,19 @@ inputs:
   change-request:
     description: 'The customized inputs to create change with the requested details.'
     required: true
+  run_id:
+    description: 'GitHub run ID'
+    required: true
+  run_number:
+    description: 'GitHub run number'
+    required: true
+  sha:
+    description: 'Commit SHA'
+    required: true
+  run_attempt:
+    description: 'Run attempt number'
+    required: false
+    default: '1'
   changeCreationTimeOut:
     description: 'The max. time in seconds to wait until change created.'
     required: false
